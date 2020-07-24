@@ -30,7 +30,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>WithDraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentWithDraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -91,6 +91,23 @@
 
         })
         //withdraw button handler
+        const withDrawBtn=document.getElementById("addWithdraw");
+        withDrawBtn.addEventListener("click",function(){
+            const withdrawAmount=document.getElementById("withdrawAmount").value;
+            const withdrawNumber=parseFloat(withdrawAmount);
+            const currentWithDraw=document.getElementById("currentWithDraw").innerText;
+            const currentWithDrawNumber=parseFloat(currentWithDraw);
+            const totalWithdraw=withdrawNumber+currentWithDrawNumber;
+            document.getElementById("currentWithDraw").innerText=totalWithdraw;
+            const currentBalance=document.getElementById("currentBalance").innerText;
+            const currentBalanceNumber=parseFloat(currentBalance);
+            const totalBalanceNumber=currentBalanceNumber-totalWithdraw;
+            document.getElementById("currentBalance").innerText=totalBalanceNumber;
+            document.getElementById("withdrawAmount").value="";
+        })
+
+
+
 
 
     </script>
